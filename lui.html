@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mensaje de Amor</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff6b6b, #fc5c7d, #6c5b7b);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .mensaje-container {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .mensaje {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            animation: brillar 2s infinite;
+        }
+
+        .sub-mensaje {
+            font-size: 1.5rem;
+            color: #ffe6e6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .corazon {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: flotar 6s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes brillar {
+            0% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff69b4; }
+            100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensaje-container">
+        <div class="mensaje">Luisa te amo ❤️</div>
+        <div class="sub-mensaje">Con todo mi corazón</div>
+    </div>
+
+    <script>
+        function crearCorazones() {
+            const corazones = ['❤️', '💖', '💗', '💓', '💝'];
+            setInterval(() => {
+                const corazon = document.createElement('div');
+                corazon.className = 'corazon';
+                corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+                corazon.style.left = Math.random() * 100 + 'vw';
+                corazon.style.animationDuration = 6 + Math.random() * 4 + 's';
+                document.body.appendChild(corazon);
+                setTimeout(() => corazon.remove(), 10000);
+            }, 300);
+        }
+        crearCorazones();
+    </script>
+</body>
+</html>
